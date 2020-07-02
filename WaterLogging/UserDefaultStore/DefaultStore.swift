@@ -20,6 +20,24 @@ class DefaultStore {
     
     //MARK: Helper Function
     
+    func setupTodayDateToDefaults(){
+        let storeData = getTodaysDateString()
+        UserDefaults.standard.set(storeData, forKey: setTodayDateInDefaults)
+    }
+    
+    func checkIfUserDefaultDateIsSameAsToday(){
+        
+        if let dateString = UserDefaults.standard.object(forKey: setTodayDateInDefaults) as? String{
+            if dateString != getTodaysDateString(){
+                setupTodayDateToDefaults()
+                UserDefaults.standard.set(0, forKey: userWaterConsumptionForToday)
+            }
+        }
+        else{
+            setupTodayDateToDefaults()
+        }
+    }
+    
     func setupGoalDataToUserDefaults(withGoal goal : Double){
         UserDefaults.standard.set(goal, forKey: goalFromUserDefaults)
     }
@@ -30,4 +48,21 @@ class DefaultStore {
         UserDefaults.standard.set(totalConsumption, forKey: userWaterConsumptionForToday)
     }
     
+    func getDataToSetLabelForVisualController() -> String{
+        
+        let goalValue = UserDefaults.standard.double(forKey: goalFromUserDefaults)
+        let todayIntake = UserDefaults.standard.double(forKey: userWaterConsumptionForToday)
+        return "\(Int(todayIntake)) oz of \(Int(goalValue)) oz goal consumed today"
+    }
+    
+}
+
+extension DefaultStore{
+    func getTodaysDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        
+        return formatter.string(from: Date())
+        
+    }
 }

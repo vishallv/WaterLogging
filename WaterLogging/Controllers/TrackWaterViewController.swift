@@ -20,6 +20,12 @@ class TrackWaterViewController: UIViewController {
         setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       checkIfUserDefaultDateIsSameAsToday()
+    }
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -43,6 +49,11 @@ class TrackWaterViewController: UIViewController {
     }
     
     //MARK: Helper Function
+    
+    private func checkIfUserDefaultDateIsSameAsToday(){
+        DefaultStore.shared.checkIfUserDefaultDateIsSameAsToday()
+    }
+    
     // Set Up
     
     private func setUp() {
