@@ -15,9 +15,14 @@ class TrackWaterViewController: UIViewController {
     
     //MARK: Life Cycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUp()
+    }
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setUp()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -33,7 +38,32 @@ class TrackWaterViewController: UIViewController {
     }
     
     @objc private func goalButtonPressed() {
-        print("Goal button pressed")
+        let alertController = UIAlertController(title: "Water Consumption Goal!!", message: "Please enter you water consumption goal in Ounces", preferredStyle: .alert)
+        
+        alertController.addTextField { (textfield) in
+            textfield.placeholder = "Enter your goal"
+        }
+        
+        let addConsumptionAction = UIAlertAction(title: "Update Goal", style: .default) { [weak self ,weak alertController](_) in
+            
+            guard let alertController = alertController, let textfield = alertController.textFields?.first else {return}
+            
+            if let alertText = textfield.text,let goalValue = Double(alertText){
+                print(goalValue)
+                
+            }
+            else{
+                print("error")
+            }
+            
+            
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(addConsumptionAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: Helper Function
