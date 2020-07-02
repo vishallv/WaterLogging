@@ -19,6 +19,7 @@
 		B31AA1F124734F10007708F4 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31AA1F024734F10007708F4 /* AppTabBarController.swift */; };
 		C9FFFCC224AE69AB00B9DAB0 /* DefaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FFFCC124AE69AB00B9DAB0 /* DefaultStore.swift */; };
 		C9FFFCC624AE76D100B9DAB0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FFFCC524AE76D100B9DAB0 /* HealthKit.framework */; };
+		C9FFFCC924AE776F00B9DAB0 /* HealthDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FFFCC824AE776F00B9DAB0 /* HealthDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C9FFFCC124AE69AB00B9DAB0 /* DefaultStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStore.swift; sourceTree = "<group>"; };
 		C9FFFCC324AE76D100B9DAB0 /* WaterLogging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WaterLogging.entitlements; sourceTree = "<group>"; };
 		C9FFFCC524AE76D100B9DAB0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		C9FFFCC824AE776F00B9DAB0 /* HealthDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		B31AA1C624734EAB007708F4 /* WaterLogging */ = {
 			isa = PBXGroup;
 			children = (
+				C9FFFCC724AE775200B9DAB0 /* HealthStore */,
 				C9FFFCC324AE76D100B9DAB0 /* WaterLogging.entitlements */,
 				C9FFFCC024AE698B00B9DAB0 /* UserDefaultStore */,
 				C9FFFCBF24AE690E00B9DAB0 /* Controllers */,
@@ -139,6 +142,14 @@
 				C9FFFCC524AE76D100B9DAB0 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9FFFCC724AE775200B9DAB0 /* HealthStore */ = {
+			isa = PBXGroup;
+			children = (
+				C9FFFCC824AE776F00B9DAB0 /* HealthDataStore.swift */,
+			);
+			path = HealthStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 				B31AA1F124734F10007708F4 /* AppTabBarController.swift in Sources */,
 				B31AA1C824734EAB007708F4 /* AppDelegate.swift in Sources */,
 				C9FFFCC224AE69AB00B9DAB0 /* DefaultStore.swift in Sources */,
+				C9FFFCC924AE776F00B9DAB0 /* HealthDataStore.swift in Sources */,
 				B31AA1CA24734EAB007708F4 /* SceneDelegate.swift in Sources */,
 				B31AA1D224734EAB007708F4 /* WaterLogging.xcdatamodeld in Sources */,
 			);
