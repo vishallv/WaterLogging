@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+let goalFromUserDefaults = "goalFromUserDefaults"
+let userWaterConsumptionForToday = "userWaterConsumptionForToday"
+let setTodayDateInDefaults = "setTodayDateInDefaults"
 
 class DefaultStore {
     
@@ -17,5 +19,10 @@ class DefaultStore {
     private init() {}
     
     //MARK: Helper Function
+    
+    func setupGoalDataToUserDefaults(withGoal goal : Double){
+        UserDefaults.standard.set(goal, forKey: goalFromUserDefaults)
+    }
+    
     
 }
