@@ -8,8 +8,12 @@ import UIKit
 
 class TrackWaterViewController: UIViewController {
     
+    
+    //MARK: Properties
     private let addWaterButton = UIButton()
     private let updateGoalButton = UIButton()
+    
+    //MARK: Life Cycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -19,7 +23,20 @@ class TrackWaterViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    //MARK: Selector
+    
+    // Actions
+    
+    @objc private func addWaterButtonPressed() {
+        print("Add water button pressed")
+    }
+    
+    @objc private func goalButtonPressed() {
+        print("Goal button pressed")
+    }
+    
+    //MARK: Helper Function
     // Set Up
     
     private func setUp() {
@@ -71,16 +88,10 @@ class TrackWaterViewController: UIViewController {
         NSLayoutConstraint.activate(containerConstraints)
         
     }
+
     
-    // Actions
     
-    @objc private func addWaterButtonPressed() {
-        print("Add water button pressed")
-    }
     
-    @objc private func goalButtonPressed() {
-        print("Goal button pressed")
-    }
     
 
 }
