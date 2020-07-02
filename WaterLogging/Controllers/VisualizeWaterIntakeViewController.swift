@@ -47,6 +47,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     //MARK: Helper Function
     // Set Up
     
+    //Get the updated user mass from health store and update the manualTrackingLabel text on the main thread
     private func configureManualTrackingLabelBasedOnUserWeight(){
         HealthDataStore.shared.getUserMostRecentBodyMass { [weak self](mass) in
             DispatchQueue.main.async {

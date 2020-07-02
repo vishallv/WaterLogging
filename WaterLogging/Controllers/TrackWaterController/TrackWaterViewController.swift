@@ -21,10 +21,12 @@ class TrackWaterViewController: UIViewController {
         setupNavigationRightBarItem()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         checkIfUserDefaultDateIsSameAsToday()
+        //Get authorization status when view appears
         getHealthKitAuthorizationStatus()
     }
     
@@ -41,15 +43,19 @@ class TrackWaterViewController: UIViewController {
     
     // Actions
     @objc func handleAddTapped(){
+        // Presents a Alert Controller to update user Weight
         presentAlertToInputUserWeight()
     }
     
     @objc private func addWaterButtonPressed() {
+        //Increases the user water intake and presents a alert controller with message
         DefaultStore.shared.addUserConsumptionByEightOZ()
         presentCustomAlert(title: "Yippie", message: "Great progress", subTitle: "Ok", style: .default)
     }
     
     @objc private func goalButtonPressed() {
+        
+        // Presents a Alert Controller to update user Goal
         setupAlertControllerToAddGoal()
     }
     
@@ -59,7 +65,7 @@ class TrackWaterViewController: UIViewController {
     }
     
     private func setupNavigationRightBarItem(){
-        
+        //Added a right bar button to navigationItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Weight", style: .plain, target: self, action: #selector(handleAddTapped))
     }
     
