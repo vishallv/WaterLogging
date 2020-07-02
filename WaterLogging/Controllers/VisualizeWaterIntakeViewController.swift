@@ -8,22 +8,34 @@ import UIKit
 
 class VisualizeWaterIntakeViewController: UIViewController {
 
+
+    //MARK: Properties
     private let trackingLabel = UILabel()
-    
+    //MARK: Life Cycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setUp()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureConsumptionAndGoalLabel()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setUp()
+        configureConsumptionAndGoalLabel()
     }
     
+    //MARK: Selector
+    
+    //MARK: Helper Function
     // Set Up
 
     private func setUp() {
@@ -52,3 +64,11 @@ class VisualizeWaterIntakeViewController: UIViewController {
     }
 }
 
+extension VisualizeWaterIntakeViewController {
+    private func configureConsumptionAndGoalLabel(){
+       
+        let goalValue = UserDefaults.standard.double(forKey: goalFromUserDefaults)
+        trackingLabel.text = "X oz of \(Int(goalValue)) oz goal consumed today"
+        
+    }
+}
