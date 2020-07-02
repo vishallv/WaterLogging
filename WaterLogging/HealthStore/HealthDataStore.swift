@@ -102,6 +102,28 @@ class HealthDataStore {
         
         
     }
+    func getUserMostRecentBodyMass(completion : @escaping(Double)->Void){
+        guard let quantityType = HKQuantityType.quantityType(forIdentifier: .bodyMass) else {return}
+        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.date(byAdding: .day, value: -7, to: Date()), end: nil, options: .strictStartDate)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let query = HKSampleQuery(sampleType: quantityType, predicate: predicate, limit: 1, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+            
+            if let error = error{
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let sample = samples?.first as? HKQuantitySample{
+                
+                completion(sample.quantity.doubleValue(for: .pound()))
+            }
+            else{
+                completion(136)
+            }
+        }
+        
+        healthStore.execute(query)
+    }
     
     
     

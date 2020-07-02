@@ -55,6 +55,10 @@ class DefaultStore {
         return "\(Int(todayIntake)) oz of \(Int(goalValue)) oz goal consumed today"
     }
     
+    func getTodaysConsumption() ->Int{
+        return Int(UserDefaults.standard.double(forKey: userWaterConsumptionForToday))
+    }
+    
 }
 
 extension DefaultStore{

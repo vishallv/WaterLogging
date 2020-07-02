@@ -20,6 +20,7 @@
 		C9FFFCC224AE69AB00B9DAB0 /* DefaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FFFCC124AE69AB00B9DAB0 /* DefaultStore.swift */; };
 		C9FFFCC624AE76D100B9DAB0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FFFCC524AE76D100B9DAB0 /* HealthKit.framework */; };
 		C9FFFCC924AE776F00B9DAB0 /* HealthDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FFFCC824AE776F00B9DAB0 /* HealthDataStore.swift */; };
+		C9FFFCCC24AE7F4200B9DAB0 /* TrackWaterViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FFFCCB24AE7F4200B9DAB0 /* TrackWaterViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C9FFFCC324AE76D100B9DAB0 /* WaterLogging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WaterLogging.entitlements; sourceTree = "<group>"; };
 		C9FFFCC524AE76D100B9DAB0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C9FFFCC824AE776F00B9DAB0 /* HealthDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataStore.swift; sourceTree = "<group>"; };
+		C9FFFCCB24AE7F4200B9DAB0 /* TrackWaterViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackWaterViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +123,8 @@
 		C9FFFCBF24AE690E00B9DAB0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C9FFFCCA24AE7F1D00B9DAB0 /* TrackWaterController */,
 				B31AA1F024734F10007708F4 /* AppTabBarController.swift */,
-				B31AA1EC24734EC7007708F4 /* TrackWaterViewController.swift */,
 				B31AA1EE24734EE8007708F4 /* VisualizeWaterIntakeViewController.swift */,
 			);
 			path = Controllers;
@@ -150,6 +152,15 @@
 				C9FFFCC824AE776F00B9DAB0 /* HealthDataStore.swift */,
 			);
 			path = HealthStore;
+			sourceTree = "<group>";
+		};
+		C9FFFCCA24AE7F1D00B9DAB0 /* TrackWaterController */ = {
+			isa = PBXGroup;
+			children = (
+				B31AA1EC24734EC7007708F4 /* TrackWaterViewController.swift */,
+				C9FFFCCB24AE7F4200B9DAB0 /* TrackWaterViewController+Extensions.swift */,
+			);
+			path = TrackWaterController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				B31AA1C824734EAB007708F4 /* AppDelegate.swift in Sources */,
 				C9FFFCC224AE69AB00B9DAB0 /* DefaultStore.swift in Sources */,
 				C9FFFCC924AE776F00B9DAB0 /* HealthDataStore.swift in Sources */,
+				C9FFFCCC24AE7F4200B9DAB0 /* TrackWaterViewController+Extensions.swift in Sources */,
 				B31AA1CA24734EAB007708F4 /* SceneDelegate.swift in Sources */,
 				B31AA1D224734EAB007708F4 /* WaterLogging.xcdatamodeld in Sources */,
 			);

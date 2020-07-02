@@ -11,6 +11,14 @@ class VisualizeWaterIntakeViewController: UIViewController {
 
     //MARK: Properties
     private let trackingLabel = UILabel()
+    private let manualTrackingLabel :  UILabel = {
+        let label = UILabel()
+        label.text = "X oz of X oz goal consumed today \nbased of your weight"
+        label.numberOfLines = 2
+        label.textColor = .label
+        label.textAlignment = .center
+        return label
+    }()
     //MARK: Life Cycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -24,6 +32,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureConsumptionAndGoalLabel()
+        configureManualTrackingLabelBasedOnUserWeight()
     }
     
     override func viewDidLoad() {
@@ -37,6 +46,15 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     //MARK: Helper Function
     // Set Up
+    
+    private func configureManualTrackingLabelBasedOnUserWeight(){
+        HealthDataStore.shared.getUserMostRecentBodyMass { [weak self](mass) in
+            DispatchQueue.main.async {
+                let waterConsumptionValue = DefaultStore.shared.getTodaysConsumption()
+                self?.manualTrackingLabel.text = "\(waterConsumptionValue) oz of \(Int(mass * 2/3)) oz goal consumed today \nbased of your weight"
+            }
+        }
+    }
 
     private func setUp() {
         trackingLabel.text = "X oz of X oz goal consumed today"
@@ -49,6 +67,8 @@ class VisualizeWaterIntakeViewController: UIViewController {
     private func setUpConstraints() {
         trackingLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(trackingLabel)
+        manualTrackingLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(manualTrackingLabel)
         
         // Label constraints
         
@@ -60,6 +80,12 @@ class VisualizeWaterIntakeViewController: UIViewController {
                                     trackingLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor)]
         
         NSLayoutConstraint.activate(trackingLabelConstraints)
+        
+        NSLayoutConstraint.activate([
+            manualTrackingLabel.topAnchor.constraint(equalTo: trackingLabel.bottomAnchor, constant: 30),
+            manualTrackingLabel.leftAnchor.constraint(equalTo: view.leftAnchor),
+            manualTrackingLabel.rightAnchor.constraint(equalTo: view.rightAnchor),
+        ])
         
     }
 }
