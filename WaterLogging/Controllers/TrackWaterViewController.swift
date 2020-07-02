@@ -52,7 +52,14 @@ class TrackWaterViewController: UIViewController {
             guard let alertController = alertController, let textfield = alertController.textFields?.first else {return}
             
             if let alertText = textfield.text,let weightValue = Double(alertText){
-               print(weightValue)
+                HealthDataStore.shared.addUserBodyMassToHealthStore(withWeight: weightValue) { (success) in
+                    if !success{
+                        DispatchQueue.main.async {
+                            self?.presentCustomAlert(title: "Error", message: "Please provide permission for write", subTitle: "Ok", style: .default)
+                            
+                        }
+                    }
+                }
                 
             }
             else{
@@ -143,12 +150,12 @@ class TrackWaterViewController: UIViewController {
         NSLayoutConstraint.activate(containerConstraints)
         
     }
-
     
     
     
     
-
+    
+    
 }
 
 extension TrackWaterViewController {

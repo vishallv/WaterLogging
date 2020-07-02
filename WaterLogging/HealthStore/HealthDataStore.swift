@@ -68,9 +68,38 @@ class HealthDataStore {
             if success {
                 print("Successfully requested authorization")
             }
-            
-            
         }
+    }
+    
+    func addUserBodyMassToHealthStore(withWeight weight : Double , completion : @escaping(Bool) -> Void){
+        
+        guard let quantitySample = convertWeightToQuantitySample(weight) else {
+            completion(false)
+            return}
+        
+        healthStore.save(quantitySample) { (success, error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            completion(true)
+        }
+    }
+    
+    private func convertWeightToQuantitySample(_ weight : Double) -> HKQuantitySample?{
+        guard let quantityType = HKQuantityType.quantityType(forIdentifier: .bodyMass) else {return nil}
+        let unit : HKUnit = .pound()
+        let today = Date()
+        let start = today
+        let end = today
+        
+        
+        let quantity = HKQuantity(unit: unit, doubleValue: weight)
+        
+        return HKQuantitySample(type: quantityType, quantity: quantity, start: start, end: end)
+        
         
     }
     
