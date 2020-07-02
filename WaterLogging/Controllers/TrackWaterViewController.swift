@@ -18,6 +18,7 @@ class TrackWaterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        setupNavigationRightBarItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +39,34 @@ class TrackWaterViewController: UIViewController {
     //MARK: Selector
     
     // Actions
+    @objc func handleAddTapped(){
+        let alertController = UIAlertController(title: "Health Data", message: "Please enter you weight in pounds!", preferredStyle: .alert)
+        
+        alertController.addTextField { (textfield) in
+            textfield.placeholder = "Enter your Weight"
+        }
+        
+        let addConsumptionAction = UIAlertAction(title: "OK", style: .default) { [weak self ,weak alertController](_) in
+            
+            guard let alertController = alertController, let textfield = alertController.textFields?.first else {return}
+            
+            if let alertText = textfield.text,let weightValue = Double(alertText){
+               print(weightValue)
+                
+            }
+            else{
+                self?.presentCustomAlert(title: "Error", message: "Invalid Data type! Enter a valid weight", subTitle: "Try Again", style: .destructive)
+            }
+            
+            
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(addConsumptionAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @objc private func addWaterButtonPressed() {
         DefaultStore.shared.addUserConsumptionByEightOZ()
@@ -49,6 +78,11 @@ class TrackWaterViewController: UIViewController {
     }
     
     //MARK: Helper Function
+    
+    private func setupNavigationRightBarItem(){
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Weight", style: .plain, target: self, action: #selector(handleAddTapped))
+    }
     
     private func checkIfUserDefaultDateIsSameAsToday(){
         DefaultStore.shared.checkIfUserDefaultDateIsSameAsToday()
