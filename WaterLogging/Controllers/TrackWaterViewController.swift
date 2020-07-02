@@ -24,7 +24,8 @@ class TrackWaterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       checkIfUserDefaultDateIsSameAsToday()
+        checkIfUserDefaultDateIsSameAsToday()
+        getHealthKitAuthorizationStatus()
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -78,6 +79,9 @@ class TrackWaterViewController: UIViewController {
     }
     
     //MARK: Helper Function
+    private func getHealthKitAuthorizationStatus(){
+        HealthDataStore.shared.getAuthorizationStatus()
+    }
     
     private func setupNavigationRightBarItem(){
         
