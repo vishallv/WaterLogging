@@ -34,7 +34,8 @@ class TrackWaterViewController: UIViewController {
     // Actions
     
     @objc private func addWaterButtonPressed() {
-        print("Add water button pressed")
+        DefaultStore.shared.addUserConsumptionByEightOZ()
+        presentCustomAlert(title: "Yippie", message: "Great progress", subTitle: "Ok", style: .default)
     }
     
     @objc private func goalButtonPressed() {
@@ -124,8 +125,6 @@ extension TrackWaterViewController {
             
             
         }
-        
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         alertController.addAction(cancelAction)
         alertController.addAction(addConsumptionAction)

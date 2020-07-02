@@ -24,5 +24,10 @@ class DefaultStore {
         UserDefaults.standard.set(goal, forKey: goalFromUserDefaults)
     }
     
+    func addUserConsumptionByEightOZ(){
+        var totalConsumption = UserDefaults.standard.double(forKey: userWaterConsumptionForToday)
+        totalConsumption += 8
+        UserDefaults.standard.set(totalConsumption, forKey: userWaterConsumptionForToday)
+    }
     
 }

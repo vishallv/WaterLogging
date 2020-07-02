@@ -68,7 +68,8 @@ extension VisualizeWaterIntakeViewController {
     private func configureConsumptionAndGoalLabel(){
        
         let goalValue = UserDefaults.standard.double(forKey: goalFromUserDefaults)
-        trackingLabel.text = "X oz of \(Int(goalValue)) oz goal consumed today"
+        let todayIntake = UserDefaults.standard.double(forKey: userWaterConsumptionForToday)
+        trackingLabel.text = "\(Int(todayIntake)) oz of \(Int(goalValue)) oz goal consumed today"
         
     }
 }
